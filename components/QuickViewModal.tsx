@@ -8,7 +8,7 @@ import type { DictKey } from "@/lib/i18n";
 import { useScrollLock, useStore } from "@/lib/store";
 import { BadgePill, SmartImage, Stars } from "./ui";
 
-function Stepper({ value, max, onChange }: { value: number; max: number; onChange: (n: number) => void }) {
+export function Stepper({ value, max, onChange }: { value: number; max: number; onChange: (n: number) => void }) {
   const { t } = useStore();
   const btn = "grid h-8 w-8 place-items-center border border-line text-gray-700 transition hover:bg-canvas disabled:cursor-not-allowed disabled:opacity-40";
   return (

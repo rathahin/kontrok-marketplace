@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { StoreProvider } from "@/lib/store";
+import UtilityBar, { CampaignStrip } from "@/components/UtilityBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import QuickViewModal from "@/components/QuickViewModal";
+import CartDrawer from "@/components/CartDrawer";
+import { MobileNav, Toast } from "@/components/MobileChrome";
 
 export const metadata: Metadata = {
   title: "Kontrok.com — Online Shopping in Cambodia",
@@ -27,7 +33,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
       <body>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <CampaignStrip />
+          <UtilityBar />
+          <Header />
+          {children}
+          <Footer />
+          <MobileNav />
+          <QuickViewModal />
+          <CartDrawer />
+          <Toast />
+        </StoreProvider>
       </body>
     </html>
   );

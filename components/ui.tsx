@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Star } from "lucide-react";
 import type { Badge } from "@/lib/data";
 import { useStore } from "@/lib/store";
@@ -24,14 +25,14 @@ export function SmartImage({ src, alt, className, label }: { src: string; alt: s
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <a href="#" className="flex shrink-0 items-center gap-1.5" aria-label="Kontrok.com home">
+    <Link href="/" className="flex shrink-0 items-center gap-1.5" aria-label="Kontrok.com home">
       <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-[17px] font-black text-white shadow-sm sm:h-9 sm:w-9 sm:text-[19px]">
         K
       </span>
       <span className={`${compact ? "hidden sm:inline" : "inline"} text-[20px] font-extrabold tracking-tight text-navy sm:text-[22px]`}>
         Kontrok<span className="text-brand">.com</span>
       </span>
-    </a>
+    </Link>
   );
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { translate, type DictKey, type Lang } from "./i18n";
 import { formatPrice, type Currency } from "./format";
 import type { CategoryId, Channel, Product } from "./data";
@@ -78,6 +79,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [category, setCategory] = useState<CategoryId | null>(null);
   const [channel, setChannel] = useState<Channel | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Restore per-viewer preferences after mount (never during SSR → no hydration mismatch).
@@ -120,8 +123,15 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setQuery(f.query ?? "");
     setCategory(f.category ?? null);
     setChannel(f.channel ?? null);
+    setQuickView(null);
+    // Filters live in context (persists across client navigation), so from any
+    // other page we just go home and land on the feed.
+    if (pathname !== "/") {
+      router.push("/#just-for-you");
+      return;
+    }
     requestAnimationFrame(() => document.getElementById("just-for-you")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-  }, []);
+  }, [pathname, router]);
 
   const value = useMemo<Store>(() => ({
     lang, setLang, t, currency, setCurrency, price,

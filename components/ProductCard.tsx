@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin, Star } from "lucide-react";
+import Link from "next/link";
+import { Eye, MapPin, Star } from "lucide-react";
 import type { Product } from "@/lib/data";
 import { compact, discountPct } from "@/lib/format";
 import type { DictKey } from "@/lib/i18n";
@@ -12,10 +13,10 @@ export default function ProductCard({ p }: { p: Product }) {
   const off = discountPct(p.price, p.originalPrice);
 
   return (
-    <button
-      type="button"
-      onClick={() => openQuickView(p)}
-      className="group flex flex-col overflow-hidden rounded-md border border-transparent bg-white text-left transition hover:border-line hover:shadow-[0_6px_18px_rgba(0,0,0,.08)]"
+    <div className="group relative">
+    <Link
+      href={`/product/${p.id}`}
+      className="flex h-full flex-col overflow-hidden rounded-md border border-transparent bg-white text-left transition hover:border-line hover:shadow-[0_6px_18px_rgba(0,0,0,.08)]"
     >
       <div className="relative aspect-square overflow-hidden bg-canvas">
         <SmartImage
@@ -46,6 +47,14 @@ export default function ProductCard({ p }: { p: Product }) {
           </span>
         </div>
       </div>
+    </Link>
+    <button
+      type="button"
+      onClick={() => openQuickView(p)}
+      className="absolute left-1/2 top-[calc(50%-60px)] hidden -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full bg-white/95 px-3 py-1.5 text-[12px] font-semibold text-gray-800 opacity-0 shadow-md transition hover:text-brand focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
+    >
+      <Eye className="h-3.5 w-3.5" aria-hidden /> {t("quickView")}
     </button>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import { Search, ShoppingCart, TrendingUp, User } from "lucide-react";
 import { matchesQuery, products, trendingSearches } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { Logo } from "./ui";
+import CategoriesMenu from "./CategoriesMenu";
 
 function escapeRe(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -161,6 +162,7 @@ export default function Header() {
     <header ref={ref} className="sticky top-0 z-40 bg-white shadow-[0_1px_0_#E5E7EB]">
       <div className="mx-auto flex max-w-site items-center gap-3 px-3 py-2.5 sm:gap-6 sm:px-4 sm:py-3">
         <Logo compact />
+        <CategoriesMenu />
         <div className="min-w-0 flex-1">
           <SearchBox />
           <div className="mt-1.5 hidden items-center gap-3 overflow-hidden whitespace-nowrap text-[12px] text-gray-500 md:flex">
@@ -175,7 +177,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => showToast(t("accountDemo"))}
-            className="hidden items-center gap-1.5 text-[13px] text-gray-700 hover:text-brand sm:flex"
+            className="hidden items-center gap-1.5 text-[13px] text-gray-700 hover:text-brand sm:flex lg:hidden"
           >
             <User className="h-5 w-5" aria-hidden />
             <span className="whitespace-nowrap">{t("login")} <span className="text-gray-300">|</span> {t("signup")}</span>

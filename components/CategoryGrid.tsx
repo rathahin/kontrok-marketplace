@@ -1,6 +1,6 @@
 "use client";
 
-import { categoryTiles } from "@/lib/data";
+import { categoryTiles, tileImage } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { SectionTitle, SmartImage } from "./ui";
 
@@ -18,7 +18,7 @@ export default function CategoryGrid() {
               className="flex h-full w-full flex-col items-center gap-1.5 px-1 py-3 transition hover:shadow-[inset_0_0_0_1px_#F85606]"
             >
               <span className="h-14 w-14 overflow-hidden rounded-lg bg-canvas sm:h-16 sm:w-16">
-                <SmartImage src={tile.image} alt="" className="h-full w-full object-cover" />
+                <SmartImage src={tileImage(tile.img)} alt="" className="h-full w-full object-cover" />
               </span>
               <span className="line-clamp-2 min-h-[30px] text-center text-[12px] leading-[15px] text-gray-700">{t(tile.key)}</span>
             </button>

@@ -1,89 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type ComponentType } from "react";
-import {
-  ArrowRight, Car, ChevronLeft, ChevronRight, Dumbbell, Gem, QrCode, Shirt, ShoppingBasket, Smartphone, Sofa, Sparkles, Truck,
-} from "lucide-react";
-import { categories, heroImages, type CategoryId } from "@/lib/data";
+import { Apple, ArrowRight, ChevronLeft, ChevronRight, Play, QrCode, Star, Ticket, Truck } from "lucide-react";
+import { heroImages } from "@/lib/data";
 import type { DictKey } from "@/lib/i18n";
 import { useStore } from "@/lib/store";
 import { SmartImage } from "./ui";
 
 type Icon = ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-
-const CAT_ICONS: Record<CategoryId, Icon> = {
-  electronics: Smartphone,
-  beauty: Sparkles,
-  home: Sofa,
-  men: Shirt,
-  women: Gem,
-  sports: Dumbbell,
-  auto: Car,
-  groceries: ShoppingBasket,
-};
-
-/** Desktop multi-level category menu with a hover flyout over the carousel. */
-function CategoryMenu({ hovered, setHovered }: { hovered: CategoryId | null; setHovered: (c: CategoryId | null) => void }) {
-  const { t, browse } = useStore();
-  const cat = categories.find((c) => c.id === hovered);
-
-  return (
-    <>
-      <nav aria-label={t("categories")} className="hidden h-[344px] rounded-md bg-white py-1.5 lg:block">
-        <ul>
-          {categories.map(({ id }) => {
-            const Ico = CAT_ICONS[id];
-            return (
-              <li key={id}>
-                <button
-                  type="button"
-                  onMouseEnter={() => setHovered(id)}
-                  onFocus={() => setHovered(id)}
-                  onClick={() => browse({ category: id })}
-                  aria-expanded={hovered === id}
-                  className={`flex h-[41px] w-full items-center gap-2.5 px-3.5 text-left text-[13px] transition ${
-                    hovered === id ? "bg-brand-50 text-brand" : "text-gray-700 hover:text-brand"
-                  }`}
-                >
-                  <Ico className="h-4 w-4 shrink-0" aria-hidden />
-                  <span className="truncate">{t(`cat.${id}` as DictKey)}</span>
-                  <ChevronRight className={`ml-auto h-3.5 w-3.5 shrink-0 ${hovered === id ? "opacity-100" : "opacity-30"}`} aria-hidden />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-
-      {cat && (
-        <div className="absolute bottom-0 left-[232px] right-0 top-0 z-30 hidden rounded-md bg-white p-6 shadow-[0_12px_40px_rgba(15,19,109,.18)] animate-fade-in lg:block">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-[16px] font-semibold text-gray-900">{t(`cat.${cat.id}` as DictKey)}</h3>
-            <button type="button" onClick={() => browse({ category: cat.id })} className="flex items-center gap-1 text-[13px] font-medium text-brand hover:underline">
-              {t("shopAll")} <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-            </button>
-          </div>
-          <div className="grid grid-cols-3 gap-6">
-            {cat.sub.map((g) => (
-              <div key={g.title}>
-                <h4 className="mb-2 text-[13px] font-semibold text-gray-900">{g.title}</h4>
-                <ul className="space-y-1.5">
-                  {g.items.map((item) => (
-                    <li key={item}>
-                      <button type="button" onClick={() => browse({ query: item })} className="text-[13px] text-gray-600 hover:text-brand">
-                        {item}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
 
 interface Slide {
   key: "h1" | "h2" | "h3" | "h4";
@@ -108,7 +32,7 @@ function ProductStack({ images }: { images: string[] }) {
 
 function IconBadge({ Ico }: { Ico: Icon }) {
   return (
-    <div className="grid h-[150px] w-[150px] place-items-center rounded-full bg-white/15 ring-8 ring-white/10 lg:h-[190px] lg:w-[190px]">
+    <div className="grid h-[150px] w-[150px] place-items-center rounded-full bg-white/15 ring-8 ring-white/10 lg:h-[180px] lg:w-[180px]">
       <Ico className="h-16 w-16 text-white lg:h-20 lg:w-20" aria-hidden />
     </div>
   );
@@ -169,7 +93,7 @@ function Carousel() {
               <span className="inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] font-bold tracking-wider sm:text-[11px]">
                 {t(`${s.key}.eyebrow` as DictKey)}
               </span>
-              <h2 className="mt-1.5 text-[22px] font-extrabold leading-[1.1] sm:mt-3 sm:text-[34px] lg:text-[42px]">
+              <h2 className="mt-1.5 text-[22px] font-extrabold leading-[1.1] sm:mt-3 sm:text-[34px] lg:text-[40px]">
                 {t(`${s.key}.title` as DictKey)}
               </h2>
               <p className="mt-1 line-clamp-2 text-[12px] text-white/85 sm:mt-2 sm:text-[16px]">{t(`${s.key}.sub` as DictKey)}</p>
@@ -182,55 +106,61 @@ function Carousel() {
                 {t(`${s.key}.cta` as DictKey)} <ArrowRight className="h-4 w-4" aria-hidden />
               </button>
             </div>
-            <div className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 sm:block lg:right-12">{s.visual}</div>
+            <div className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 sm:block lg:right-10">{s.visual}</div>
           </div>
         ))}
       </div>
 
-      <button
-        type="button"
-        onClick={() => go(index - 1)}
-        aria-label={t("prevSlide")}
-        className="absolute left-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-gray-800 opacity-0 shadow transition hover:bg-white group-hover:opacity-100 focus-visible:opacity-100 sm:grid"
-      >
+      <button type="button" onClick={() => go(index - 1)} aria-label={t("prevSlide")} className="absolute left-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-gray-800 opacity-0 shadow transition hover:bg-white group-hover:opacity-100 focus-visible:opacity-100 sm:grid">
         <ChevronLeft className="h-5 w-5" aria-hidden />
       </button>
-      <button
-        type="button"
-        onClick={() => go(index + 1)}
-        aria-label={t("nextSlide")}
-        className="absolute right-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-gray-800 opacity-0 shadow transition hover:bg-white group-hover:opacity-100 focus-visible:opacity-100 sm:grid"
-      >
+      <button type="button" onClick={() => go(index + 1)} aria-label={t("nextSlide")} className="absolute right-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-gray-800 opacity-0 shadow transition hover:bg-white group-hover:opacity-100 focus-visible:opacity-100 sm:grid">
         <ChevronRight className="h-5 w-5" aria-hidden />
       </button>
 
       <div className="absolute bottom-2.5 left-1/2 z-20 flex -translate-x-1/2 gap-1.5 sm:bottom-4">
         {slides.map((s, i) => (
-          <button
-            key={s.key}
-            type="button"
-            onClick={() => go(i)}
-            aria-label={t("goToSlide", { n: i + 1 })}
-            aria-current={i === index}
-            className={`h-2 rounded-full transition-all ${i === index ? "w-5 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
-          />
+          <button key={s.key} type="button" onClick={() => go(i)} aria-label={t("goToSlide", { n: i + 1 })} aria-current={i === index}
+            className={`h-2 rounded-full transition-all ${i === index ? "w-5 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`} />
         ))}
       </div>
     </section>
   );
 }
 
-export default function HeroSection() {
-  // Owned here so leaving the whole hero (incl. the gap to the flyout) closes it.
-  const [hovered, setHovered] = useState<CategoryId | null>(null);
+/** Right-hand "Try the app" card, as on Lazada's homepage. */
+function AppCard() {
+  const { t } = useStore();
   return (
-    <section
-      className="relative grid gap-3 lg:grid-cols-[220px_1fr]"
-      onMouseLeave={() => setHovered(null)}
-      onKeyDown={(e) => e.key === "Escape" && setHovered(null)}
-    >
-      <CategoryMenu hovered={hovered} setHovered={setHovered} />
+    <aside className="hidden h-[344px] flex-col items-center rounded-md bg-white p-4 text-center lg:flex">
+      <p className="text-[13px] font-extrabold tracking-wide text-brand">{t("tryApp")}</p>
+      <p className="mt-1 flex items-center gap-1 text-[12px] text-gray-500">
+        <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden /> {t("ratedTpl", { r: "4.8" })}
+      </p>
+      <div className="mt-3 w-full rounded-md bg-brand-50 px-3 py-2.5 text-left">
+        <p className="text-[11px] text-gray-500">{t("appFor")}</p>
+        <ul className="mt-1.5 space-y-1 text-[13px] font-semibold text-gray-800">
+          <li className="flex items-center gap-1.5"><Truck className="h-4 w-4 text-emerald-600" aria-hidden /> {t("appFreeDelivery")}</li>
+          <li className="flex items-center gap-1.5"><Ticket className="h-4 w-4 text-brand" aria-hidden /> {t("appVouchers")}</li>
+        </ul>
+      </div>
+      <div className="mt-3 grid place-items-center rounded-lg border border-line p-1.5" aria-hidden>
+        <QrCode className="h-[84px] w-[84px] text-gray-900" strokeWidth={1.25} />
+      </div>
+      <p className="mt-1.5 text-[11px] leading-tight text-gray-500">{t("appScan")}</p>
+      <div className="mt-auto flex gap-1.5">
+        <span className="flex items-center gap-1 rounded-md bg-gray-900 px-2 py-1 text-[10px] font-semibold text-white"><Apple className="h-3.5 w-3.5" aria-hidden />App Store</span>
+        <span className="flex items-center gap-1 rounded-md bg-gray-900 px-2 py-1 text-[10px] font-semibold text-white"><Play className="h-3 w-3 fill-white" aria-hidden />Google Play</span>
+      </div>
+    </aside>
+  );
+}
+
+export default function HeroSection() {
+  return (
+    <section className="grid gap-3 lg:grid-cols-[1fr_220px]">
       <Carousel />
+      <AppCard />
     </section>
   );
 }

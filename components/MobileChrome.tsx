@@ -1,18 +1,22 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CircleCheck, House, LayoutGrid, ShoppingCart, User } from "lucide-react";
 import { useStore } from "@/lib/store";
 
 /** Fixed bottom navigation (phones/tablets only). */
 export function MobileNav() {
-  const { t, cartCount, setCartOpen, showToast } = useStore();
+  const { t, cartCount, setCartOpen, showToast, browse } = useStore();
+  const pathname = usePathname();
+  if (pathname.startsWith("/product/")) return null;
   const item = "relative flex flex-col items-center justify-center gap-0.5 text-[11px] text-gray-600 active:text-brand";
   return (
     <nav aria-label="Primary" className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white pb-[env(safe-area-inset-bottom)] lg:hidden">
       <div className="grid h-14 grid-cols-4">
-        <button type="button" className={`${item} text-brand`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+        <Link href="/" className={`${item} text-brand`} onClick={() => pathname === "/" && window.scrollTo({ top: 0, behavior: "smooth" })}>
           <House className="h-5 w-5" aria-hidden /> {t("home")}
-        </button>
+        </Link>
         <button type="button" className={item} onClick={() => document.getElementById("categories")?.scrollIntoView({ behavior: "smooth" })}>
           <LayoutGrid className="h-5 w-5" aria-hidden /> {t("categories")}
         </button>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { Flame } from "lucide-react";
 import { products } from "@/lib/data";
 import { compact, discountPct } from "@/lib/format";
@@ -42,7 +43,7 @@ function Countdown() {
 }
 
 export default function FlashSale() {
-  const { t, price, openQuickView, browse } = useStore();
+  const { t, price, browse } = useStore();
   const deals = useMemo(
     () => [...products].sort((a, b) => discountPct(b.price, b.originalPrice) - discountPct(a.price, a.originalPrice)).slice(0, 6),
     [],
@@ -74,10 +75,9 @@ export default function FlashSale() {
           {deals.map((p) => {
             const soldPct = Math.min(96, Math.round((p.sold / (p.sold + p.stock)) * 100));
             return (
-              <button
+              <Link
                 key={p.id}
-                type="button"
-                onClick={() => openQuickView(p)}
+                href={`/product/${p.id}`}
                 className="group flex flex-col rounded-md p-1.5 text-left transition hover:shadow-[0_6px_18px_rgba(0,0,0,.08)]"
               >
                 <div className="aspect-square overflow-hidden rounded bg-canvas">
@@ -95,7 +95,7 @@ export default function FlashSale() {
                     {t("soldTpl", { n: compact(p.sold) })}
                   </span>
                 </div>
-              </button>
+              </Link>
             );
           })}
         </div>

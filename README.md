@@ -1,6 +1,6 @@
 # Kontrok.com — Marketplace Frontend (prototype)
 
-A high-density, Lazada-style marketplace homepage for **Kontrok.com**, built with
+A high-density, Lazada-style marketplace (homepage + product pages) for **Kontrok.com**, built with
 **Next.js 15 (App Router) + TypeScript + Tailwind CSS + lucide-react**.
 
 It is a standalone frontend with **mock data** (`lib/data.ts`). It is not connected
@@ -24,32 +24,48 @@ Requires Node 18.18+.
 
 ## What's included
 
+The layout, UX patterns and category tree follow Lazada (lazada.com.my, Nov 2026).
+All brands, stores, products and copy are fictional Kontrok ones. No Lazada logo,
+banners, seller photos or listings are used.
+
+### Homepage (`/`), in Lazada's order
+
 | Section | Notes |
 |---|---|
-| Utility bar | Sell / Track Order / Customer Care / Download App, **EN ⇄ ខ្មែរ** and **USD ⇄ KHR** (1 USD = 4,050 KHR, riel rounded to 100) |
-| Sticky header | Logo, search with live autocomplete (↑/↓/Enter/Esc), trending tags, cart badge, Login / Sign Up |
-| Hero | 220px multi-level category menu with hover flyout + auto-playing carousel (pauses on hover, swipe on touch, respects reduced motion) |
-| Channel pills | Free Shipping, Kontrok Mall, Vouchers, Top-Up & Bills, Under $5, Global Collection |
+| Campaign strip | Full-width "Weekly Grab" banner |
+| Utility bar | Feedback / Save more on app / Sell / Customer Care / Track order / Login / Sign Up, **EN ⇄ ខ្មែរ** and **USD ⇄ KHR** (1 USD = 4,050 KHR, riel rounded to 100) |
+| Sticky header | Logo, **Categories** dropdown (12 categories + sub-category flyout), search with live autocomplete (↑/↓/Enter/Esc), trending tags, cart badge |
+| Hero | Auto-playing carousel (pauses on hover, swipe on touch, respects reduced motion) + "Try the Kontrok app" card |
+| Service tiles | Kontrok Mall / Free & Fast Delivery / Official Stores / Blog |
 | Flash Sale | Live `HH:MM:SS` countdown to midnight, 6 deals with sold-progress bars |
+| Kontrok Mall | 6 official brand stores |
 | Categories | 2 × 8 tile grid; each tile filters the feed |
-| Just For You | Sticky tabs (All / Best Sellers / Top Rated / Local Stock), filter chips, infinite scroll on "All" |
-| Quick-View modal | Color swatches, sizes, quantity, Add to Cart / Buy Now |
-| Cart drawer | Quantity controls, voucher **`KONTROK10`** (10% off), free delivery over $15, totals |
-| Footer | Customer care, about, payment badges (ABA Pay, Wing, KHQR, Visa, Mastercard, COD), delivery partners |
-| Mobile | 2-column feed and fixed bottom nav (Home / Categories / Cart / Account) |
+| Just For You | Sticky tabs (All / Best Sellers / Top Rated / Local Stock), filter chips, infinite scroll on "All"; hover a card for **Quick View** |
 
-Language, currency, and cart persist in `localStorage` per browser.
+### Product page (`/product/[id]`), 34 pages pre-rendered
+
+Breadcrumb · gallery with 4 views · price, promotions, colour/size/model, quantity,
+Buy Now / Add to Cart · delivery options, return & warranty, seller box with ratings ·
+product details + specifications · ratings breakdown + reviews · Q&A ·
+"You May Also Like" · sticky Buy/Add bar on phones · 404 for unknown ids.
+
+### Everywhere
+
+Cart drawer (voucher **`KONTROK10`** = 10% off, free delivery over $15), footer with
+payment badges (ABA Pay, Wing, KHQR, Visa, Mastercard, COD), fixed bottom nav on
+phones. Language, currency, and cart persist in `localStorage` per browser.
 
 ## Structure
 
 ```
-app/            layout (fonts: Inter + Noto Sans Khmer), page, global styles
-components/     one file per section + shared ui.tsx
-lib/data.ts     24 sample products, categories, tiles, search matcher
-lib/i18n.ts     English + Khmer UI strings
-lib/store.tsx   React context: language, currency, cart, filters, overlays, toast
-lib/format.ts   price formatting (USD / KHR)
+app/                  layout (global chrome; fonts Inter + Noto Sans Khmer), home page, 404
+app/product/[id]/     product page (static params + metadata)
+components/           one file per section + ProductDetail.tsx + shared ui.tsx
+lib/data.ts           34 sample products in 12 categories, tiles, stores, reviews, Q&A, search
+lib/i18n.ts           English + Khmer UI strings
+lib/store.tsx         React context: language, currency, cart, filters, overlays, toast
+lib/format.ts         price formatting (USD / KHR)
 ```
 
 Product photos come from Unsplash. Any image that fails to load falls back to a
-`placehold.co` placeholder.
+`placehold.co` placeholder. Photos were checked by eye to avoid visible real brand logos.
