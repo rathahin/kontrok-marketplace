@@ -26,11 +26,13 @@ export function SmartImage({ src, alt, className, label }: { src: string; alt: s
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link href="/" className="flex shrink-0 items-center gap-1.5" aria-label="Kontrok.com home">
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-[17px] font-black text-white shadow-sm sm:h-9 sm:w-9 sm:text-[19px]">
-        K
+      {/* Kontrok K-bag mark (white bag, gold handle) on brand blue — same as the app icon */}
+      <span className="grid h-9 w-9 place-items-center rounded-[10px] bg-brand p-[5px] shadow-sm sm:h-10 sm:w-10 sm:rounded-[11px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/logo-mark.png" alt="" width={40} height={40} className="h-full w-full" />
       </span>
-      <span className={`${compact ? "hidden sm:inline" : "inline"} text-[20px] font-extrabold tracking-tight text-navy sm:text-[22px]`}>
-        Kontrok<span className="text-brand">.com</span>
+      <span className={`${compact ? "hidden sm:inline" : "inline"} text-[21px] font-extrabold tracking-tight text-brand sm:text-[23px]`}>
+        Kontrok<span className="text-gold-600">.com</span>
       </span>
     </Link>
   );
@@ -45,7 +47,7 @@ export function BadgePill({ badge }: { badge: Badge }) {
       </span>
     );
   return (
-    <span className="mr-1 inline-flex -translate-y-px items-center rounded-sm border border-emerald-200 bg-emerald-50 px-1 align-middle text-[10px] font-semibold leading-[13px] text-emerald-700">
+    <span className="mr-1 inline-flex -translate-y-px items-center rounded-sm border border-jade-200 bg-jade-50 px-1 align-middle text-[10px] font-semibold leading-[13px] text-jade-700">
       {t("badge.freeship")}
     </span>
   );
@@ -59,7 +61,7 @@ export function Stars({ rating, size = 12 }: { rating: number; size?: number }) 
         <Star
           key={i}
           style={{ width: size, height: size }}
-          className={i < filled ? "fill-amber-400 text-amber-400" : "fill-gray-200 text-gray-200"}
+          className={i < filled ? "fill-gold text-gold" : "fill-gray-200 text-gray-200"}
           aria-hidden
         />
       ))}

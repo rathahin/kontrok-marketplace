@@ -19,10 +19,10 @@ export default function ServiceTiles() {
     },
     {
       label: t("ch.freeship"),
-      labelTone: "bg-emerald-600 text-white",
+      labelTone: "bg-jade-600 text-white",
       title: "svc.delivery",
       visual: (
-        <span className="grid h-full w-full place-items-center bg-gradient-to-br from-emerald-400 to-teal-600">
+        <span className="grid h-full w-full place-items-center bg-gradient-to-br from-jade-400 to-jade-700">
           <Truck className="h-8 w-8 text-white" aria-hidden />
         </span>
       ),
@@ -37,7 +37,7 @@ export default function ServiceTiles() {
     },
     {
       label: t("svc.blogLabel"),
-      labelTone: "bg-violet-600 text-white",
+      labelTone: "bg-lotus-700 text-white",
       title: "svc.blog",
       visual: <SmartImage src={serviceImages.blog} alt="" className="h-full w-full object-cover" />,
       onClick: () => showToast(t("blogDemo")),

@@ -54,7 +54,7 @@ export default function Footer() {
           <h3 className="mb-3 text-[14px] font-semibold text-gray-900">{t("deliveryPartners")}</h3>
           <div className="flex flex-wrap gap-2">
             {[
-              ["Kontrok Express", "#F85606"],
+              ["Kontrok Express", "#0285C9"],
               ["J&T Express", "#E60012"],
               ["VET Express", "#1D4ED8"],
               ["Grab Express", "#00B14F"],

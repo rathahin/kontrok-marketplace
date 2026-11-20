@@ -70,18 +70,18 @@ function Info({ p }: { p: Product }) {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px]">
-        <a href="#reviews" className="flex items-center gap-1.5 text-[#1A9CB7] hover:underline">
+        <a href="#reviews" className="flex items-center gap-1.5 text-brand hover:underline">
           <Stars rating={p.rating} /> {t("ratingsTpl", { n: compact(p.reviews) })}
         </a>
         <span className="text-gray-300">|</span>
-        <a href="#qna" className="text-[#1A9CB7] hover:underline">{t("answeredTpl", { n: 2 })}</a>
+        <a href="#qna" className="text-brand hover:underline">{t("answeredTpl", { n: 2 })}</a>
       </div>
 
       <p className="-mt-2 text-[13px] text-gray-500">
         {t("brandLabel")}:{" "}
-        <button type="button" onClick={() => browse({ query: p.brand })} className="text-[#1A9CB7] hover:underline">{p.brand}</button>
+        <button type="button" onClick={() => browse({ query: p.brand })} className="text-brand hover:underline">{p.brand}</button>
         <span className="mx-2 text-gray-300">|</span>
-        <button type="button" onClick={() => browse({ query: p.brand })} className="text-[#1A9CB7] hover:underline">{t("moreFromTpl", { brand: p.brand })}</button>
+        <button type="button" onClick={() => browse({ query: p.brand })} className="text-brand hover:underline">{t("moreFromTpl", { brand: p.brand })}</button>
       </p>
 
       <div className="border-t border-line pt-4">
@@ -95,7 +95,7 @@ function Info({ p }: { p: Product }) {
       <div className="flex flex-wrap items-center gap-2 text-[12px]">
         <span className="text-gray-500">{t("promotions")}</span>
         <span className="flex items-center gap-1 rounded-sm border border-brand/40 bg-brand-50 px-2 py-0.5 font-medium text-brand"><Ticket className="h-3.5 w-3.5" aria-hidden />{t("promoVoucher")}</span>
-        <span className="flex items-center gap-1 rounded-sm border border-emerald-300 bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700"><Truck className="h-3.5 w-3.5" aria-hidden />{t("promoShip")}</span>
+        <span className="flex items-center gap-1 rounded-sm border border-jade-300 bg-jade-50 px-2 py-0.5 font-medium text-jade-700"><Truck className="h-3.5 w-3.5" aria-hidden />{t("promoShip")}</span>
       </div>
 
       {p.colors && (
@@ -148,15 +148,15 @@ function Info({ p }: { p: Product }) {
       </div>
 
       <div className="hidden grid-cols-2 gap-3 pt-1 sm:grid">
-        <button type="button" onClick={() => add(true)} className="rounded bg-[#2ABBE8] py-3 text-[15px] font-medium text-white transition hover:brightness-95">{t("buyNow")}</button>
-        <button type="button" onClick={() => add(false)} className="rounded bg-brand py-3 text-[15px] font-medium text-white transition hover:bg-brand-600">{t("addToCart")}</button>
+        <button type="button" onClick={() => add(true)} className="rounded-md border-[1.5px] border-brand bg-white py-3 text-[15px] font-bold text-navy transition hover:bg-brand-50">{t("buyNow")}</button>
+        <button type="button" onClick={() => add(false)} className="rounded-md bg-brand py-3 text-[15px] font-bold text-white transition hover:bg-brand-600">{t("addToCart")}</button>
       </div>
 
       {/* phones: sticky CTA bar replaces the bottom nav on this page */}
       <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[auto_1fr_1fr] border-t border-line bg-white pb-[env(safe-area-inset-bottom)] sm:hidden">
         <Link href="/" className="grid w-16 place-items-center text-[11px] text-gray-600"><Store className="h-5 w-5" aria-hidden />{t("home")}</Link>
-        <button type="button" onClick={() => add(true)} className="h-14 bg-[#2ABBE8] text-[14px] font-medium text-white">{t("buyNow")}</button>
-        <button type="button" onClick={() => add(false)} className="h-14 bg-brand text-[14px] font-medium text-white">{t("addToCart")}</button>
+        <button type="button" onClick={() => add(true)} className="h-14 bg-brand-50 text-[14px] font-bold text-navy">{t("buyNow")}</button>
+        <button type="button" onClick={() => add(false)} className="h-14 bg-brand text-[14px] font-bold text-white">{t("addToCart")}</button>
       </div>
     </div>
   );
@@ -186,7 +186,7 @@ function Aside({ p }: { p: Product }) {
         <div className={row}>
           <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gray-400" aria-hidden />
           <span className="flex-1">{overseas ? t("loc.overseas") : t("deliverTo")}</span>
-          <button type="button" onClick={() => showToast(t("accountDemo"))} className="shrink-0 text-[12px] font-semibold uppercase text-[#1A9CB7]">{t("change")}</button>
+          <button type="button" onClick={() => showToast(t("accountDemo"))} className="shrink-0 text-[12px] font-semibold uppercase text-brand">{t("change")}</button>
         </div>
         <div className={`${row} border-t border-line`}>
           <Truck className="mt-0.5 h-4 w-4 shrink-0 text-gray-400" aria-hidden />
@@ -221,7 +221,7 @@ function Aside({ p }: { p: Product }) {
             <span className="truncate">{p.store}</span>
             {p.badge === "mall" && <BadgeCheck className="h-4 w-4 shrink-0 text-navy" aria-label={t("officialStore")} />}
           </span>
-          <button type="button" onClick={() => showToast(t("accountDemo"))} className="flex shrink-0 items-center gap-1 text-[12px] font-medium text-[#1A9CB7]">
+          <button type="button" onClick={() => showToast(t("accountDemo"))} className="flex shrink-0 items-center gap-1 text-[12px] font-medium text-brand">
             <MessageCircle className="h-3.5 w-3.5" aria-hidden /> Chat
           </button>
         </div>
@@ -233,7 +233,7 @@ function Aside({ p }: { p: Product }) {
             </div>
           ))}
         </dl>
-        <button type="button" onClick={() => browse({ query: p.store })} className="mt-2 w-full py-1 text-[13px] font-semibold uppercase text-[#1A9CB7]">
+        <button type="button" onClick={() => browse({ query: p.store })} className="mt-2 w-full py-1 text-[13px] font-semibold uppercase text-brand">
           {t("goToStore")}
         </button>
       </div>
@@ -290,7 +290,7 @@ function Reviews({ p }: { p: Product }) {
             <li key={i} className="flex items-center gap-2 text-[12px] text-gray-500">
               <span className="w-8 text-right">{5 - i} ★</span>
               <span className="h-3 flex-1 overflow-hidden rounded-sm bg-gray-100">
-                <span className="block h-full bg-amber-400" style={{ width: `${max ? (c / max) * 100 : 0}%` }} />
+                <span className="block h-full bg-gold" style={{ width: `${max ? (c / max) * 100 : 0}%` }} />
               </span>
               <span className="tabular w-12">{compact(c)}</span>
             </li>
@@ -307,7 +307,7 @@ function Reviews({ p }: { p: Product }) {
               <span className="text-[12px] text-gray-400">{r.date}</span>
             </div>
             <p className="mt-1.5 text-gray-500">
-              {r.name} <span className="ml-1 inline-flex items-center gap-0.5 text-emerald-600"><BadgeCheck className="h-3.5 w-3.5" aria-hidden />{t("verifiedPurchase")}</span>
+              {r.name} <span className="ml-1 inline-flex items-center gap-0.5 text-jade-600"><BadgeCheck className="h-3.5 w-3.5" aria-hidden />{t("verifiedPurchase")}</span>
             </p>
             <p className="mt-2 text-gray-800">{r.text}</p>
             {r.variant && <p className="mt-1.5 text-[12px] text-gray-400">{r.variant}</p>}
@@ -349,9 +349,9 @@ export default function ProductDetail({ p }: { p: Product }) {
   return (
     <main className="mx-auto max-w-site px-3 pb-24 pt-3 sm:px-4 lg:pb-6">
       <nav aria-label="Breadcrumb" className="mb-3 flex items-center gap-1 overflow-hidden whitespace-nowrap text-[12px] text-gray-500">
-        <Link href="/" className="text-[#1A9CB7] hover:underline">{t("home")}</Link>
+        <Link href="/" className="text-brand hover:underline">{t("home")}</Link>
         <ChevronRight className="h-3 w-3 shrink-0" aria-hidden />
-        <button type="button" onClick={() => browse({ category: p.category })} className="text-[#1A9CB7] hover:underline">{t(`cat.${p.category}` as DictKey)}</button>
+        <button type="button" onClick={() => browse({ category: p.category })} className="text-brand hover:underline">{t(`cat.${p.category}` as DictKey)}</button>
         <ChevronRight className="h-3 w-3 shrink-0" aria-hidden />
         <span className="truncate">{p.title}</span>
       </nav>

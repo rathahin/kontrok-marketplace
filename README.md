@@ -22,6 +22,16 @@ npm start          # http://localhost:3100
 
 Requires Node 18.18+.
 
+## Brand
+
+Uses the Kontrok brand from the mobile app (`mobile/src/theme.js`, `mobile/assets/expo`):
+
+- **Logo:** K shopping-bag mark (white bag, gold handle) on brand blue, `public/brand/logo-mark.png`; favicon `app/icon.png`
+- **Colors** (`tailwind.config.ts`): brand blue `#0285C9`, deep blue `#0A5D8A`, gold `#F5C556`,
+  jade `#57C79E`, lotus `#F58FB0`, saffron `#F0A24E`, warm neutrals (cream `#F6F5F1` background, ink `#1C1B18`)
+- **Type:** Manrope + Noto Sans Khmer; rounder corners as in the app
+- **Pattern:** Khmer folk pattern from the app splash, on the campaign strip (`public/brand/pattern.jpg`)
+
 ## What's included
 
 The layout, UX patterns and category tree follow Lazada (lazada.com.my, Nov 2026).
@@ -58,7 +68,7 @@ phones. Language, currency, and cart persist in `localStorage` per browser.
 ## Structure
 
 ```
-app/                  layout (global chrome; fonts Inter + Noto Sans Khmer), home page, 404
+app/                  layout (global chrome; fonts Manrope + Noto Sans Khmer), home page, 404
 app/product/[id]/     product page (static params + metadata)
 components/           one file per section + ProductDetail.tsx + shared ui.tsx
 lib/data.ts           34 sample products in 12 categories, tiles, stores, reviews, Q&A, search

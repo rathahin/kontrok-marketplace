@@ -107,7 +107,7 @@ export default function JustForYou() {
       <SectionTitle id="jfy-title">{t("justForYou")}</SectionTitle>
 
       <div className="sticky z-30 -mx-3 bg-canvas/95 px-3 pb-2 pt-1 backdrop-blur sm:mx-0 sm:px-0" style={{ top: "var(--header-h, 64px)" }}>
-        <div role="tablist" aria-label={t("justForYou")} className="no-scrollbar flex gap-1 overflow-x-auto rounded-md bg-white px-2 shadow-[0_1px_0_#E5E7EB]">
+        <div role="tablist" aria-label={t("justForYou")} className="no-scrollbar flex gap-1 overflow-x-auto rounded-md bg-white px-2 shadow-[0_1px_0_#ECEAE3]">
           {TABS.map(({ id, key }) => (
             <button
               key={id}

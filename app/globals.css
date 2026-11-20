@@ -9,7 +9,6 @@
   }
   body {
     @apply bg-canvas text-gray-900 antialiased;
-    font-feature-settings: "cv11", "ss01";
   }
   :focus-visible {
     @apply outline-none ring-2 ring-brand ring-offset-1;

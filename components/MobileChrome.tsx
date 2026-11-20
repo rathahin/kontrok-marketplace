@@ -45,7 +45,7 @@ export function Toast() {
     <div role="status" aria-live="polite" className="pointer-events-none fixed bottom-20 left-1/2 z-[60] -translate-x-1/2 lg:bottom-8">
       {toast && (
         <div key={toast} className="flex items-center gap-2 whitespace-nowrap rounded-full bg-gray-900/90 px-4 py-2.5 text-[13px] text-white shadow-lg animate-pop-in">
-          <CircleCheck className="h-4 w-4 text-emerald-400" aria-hidden /> {toast}
+          <CircleCheck className="h-4 w-4 text-jade-400" aria-hidden /> {toast}
         </div>
       )}
     </div>

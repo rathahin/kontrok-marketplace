@@ -34,8 +34,8 @@ function Countdown() {
     <span className="flex items-center gap-1" role="timer" aria-live="off">
       {parts.map((v, i) => (
         <span key={i} className="flex items-center gap-1">
-          <span className="tabular min-w-[28px] rounded bg-brand px-1 py-0.5 text-center text-[14px] font-bold text-white">{v}</span>
-          {i < 2 && <span className="font-bold text-brand">:</span>}
+          <span className="tabular min-w-[28px] rounded bg-navy px-1 py-0.5 text-center text-[14px] font-bold text-white">{v}</span>
+          {i < 2 && <span className="font-bold text-navy">:</span>}
         </span>
       ))}
     </span>
@@ -56,7 +56,7 @@ export default function FlashSale() {
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-3">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span className="flex items-center gap-1.5 text-[14px] font-semibold text-brand">
-              <Flame className="h-4 w-4 fill-brand" aria-hidden /> {t("onSaleNow")}
+              <Flame className="h-4 w-4 fill-saffron text-saffron-700" aria-hidden /> {t("onSaleNow")}
             </span>
             <span className="flex items-center gap-2 text-[13px] text-gray-600">
               {t("endsIn")} <Countdown />
@@ -89,8 +89,8 @@ export default function FlashSale() {
                   <span className="tabular text-gray-400 line-through">{price(p.originalPrice)}</span>
                   <span className="rounded-sm bg-brand-50 px-1 font-semibold text-brand">-{discountPct(p.price, p.originalPrice)}%</span>
                 </div>
-                <div className="relative mt-2 h-4 overflow-hidden rounded-full bg-brand-100">
-                  <div className="h-full rounded-full bg-gradient-to-r from-[#FF8A1E] to-brand" style={{ width: `${soldPct}%` }} />
+                <div className="relative mt-2 h-4 overflow-hidden rounded-full bg-saffron-100">
+                  <div className="h-full rounded-full bg-gradient-to-r from-saffron to-lotus-700" style={{ width: `${soldPct}%` }} />
                   <span className="absolute inset-0 grid place-items-center text-[10px] font-semibold text-white [text-shadow:0_1px_1px_rgba(0,0,0,.25)]">
                     {t("soldTpl", { n: compact(p.sold) })}
                   </span>

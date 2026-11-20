@@ -45,10 +45,10 @@ function Carousel() {
   const touchX = useRef<number | null>(null);
 
   const slides: Slide[] = [
-    { key: "h1", bg: "bg-gradient-to-br from-[#FF8A1E] via-brand to-[#D9261C]", cta: () => browse({}), visual: <ProductStack images={heroImages.sale} /> },
-    { key: "h2", bg: "bg-gradient-to-br from-navy via-[#1E2490] to-[#3B3FC4]", cta: () => browse({ channel: "freeship" }), visual: <IconBadge Ico={Truck} /> },
-    { key: "h3", bg: "bg-gradient-to-br from-navy-900 via-[#2A1A5E] to-[#6B1E8C]", cta: () => browse({ channel: "mall" }), visual: <ProductStack images={heroImages.mall} /> },
-    { key: "h4", bg: "bg-gradient-to-br from-[#E1232E] to-[#8A0E1D]", cta: () => showToast(t("voucherToast")), visual: <IconBadge Ico={QrCode} /> },
+    { key: "h1", bg: "bg-gradient-to-br from-brand via-brand-600 to-navy-900", cta: () => browse({}), visual: <ProductStack images={heroImages.sale} /> },
+    { key: "h2", bg: "bg-gradient-to-br from-jade-500 via-jade-600 to-jade-800", cta: () => browse({ channel: "freeship" }), visual: <IconBadge Ico={Truck} /> },
+    { key: "h3", bg: "bg-gradient-to-br from-navy-900 via-navy to-brand", cta: () => browse({ channel: "mall" }), visual: <ProductStack images={heroImages.mall} /> },
+    { key: "h4", bg: "bg-gradient-to-br from-saffron-600 via-lotus-700 to-lotus-800", cta: () => showToast(t("voucherToast")), visual: <IconBadge Ico={QrCode} /> },
   ];
   const n = slides.length;
   const go = useCallback((i: number) => setIndex(((i % n) + n) % n), [n]);
@@ -101,7 +101,7 @@ function Carousel() {
                 type="button"
                 tabIndex={i === index ? 0 : -1}
                 onClick={s.cta}
-                className="mt-2.5 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[12px] font-bold text-gray-900 shadow-md transition hover:scale-[1.03] sm:mt-5 sm:px-5 sm:py-2.5 sm:text-[14px]"
+                className="mt-2.5 inline-flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1.5 text-[12px] font-bold text-gray-900 shadow-md transition hover:scale-[1.03] sm:mt-5 sm:px-5 sm:py-2.5 sm:text-[14px]"
               >
                 {t(`${s.key}.cta` as DictKey)} <ArrowRight className="h-4 w-4" aria-hidden />
               </button>
@@ -135,12 +135,12 @@ function AppCard() {
     <aside className="hidden h-[344px] flex-col items-center rounded-md bg-white p-4 text-center lg:flex">
       <p className="text-[13px] font-extrabold tracking-wide text-brand">{t("tryApp")}</p>
       <p className="mt-1 flex items-center gap-1 text-[12px] text-gray-500">
-        <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden /> {t("ratedTpl", { r: "4.8" })}
+        <Star className="h-3.5 w-3.5 fill-gold text-gold" aria-hidden /> {t("ratedTpl", { r: "4.8" })}
       </p>
       <div className="mt-3 w-full rounded-md bg-brand-50 px-3 py-2.5 text-left">
         <p className="text-[11px] text-gray-500">{t("appFor")}</p>
         <ul className="mt-1.5 space-y-1 text-[13px] font-semibold text-gray-800">
-          <li className="flex items-center gap-1.5"><Truck className="h-4 w-4 text-emerald-600" aria-hidden /> {t("appFreeDelivery")}</li>
+          <li className="flex items-center gap-1.5"><Truck className="h-4 w-4 text-jade-600" aria-hidden /> {t("appFreeDelivery")}</li>
           <li className="flex items-center gap-1.5"><Ticket className="h-4 w-4 text-brand" aria-hidden /> {t("appVouchers")}</li>
         </ul>
       </div>

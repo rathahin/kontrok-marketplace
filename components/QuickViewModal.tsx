@@ -143,7 +143,7 @@ function QuickView({ p, onClose }: { p: Product; onClose: () => void }) {
 
           <ul className="space-y-1.5 border-t border-line pt-3 text-[12px] text-gray-600">
             <li className="flex items-center gap-2">
-              {p.location === "overseas" ? <MapPin className="h-4 w-4 text-gray-400" aria-hidden /> : <Truck className="h-4 w-4 text-emerald-600" aria-hidden />}
+              {p.location === "overseas" ? <MapPin className="h-4 w-4 text-gray-400" aria-hidden /> : <Truck className="h-4 w-4 text-jade-600" aria-hidden />}
               {t("shipsFrom", { loc, days: t(p.location === "overseas" ? "daysOverseas" : "daysLocal") })}
             </li>
             {p.badge === "mall" && (
@@ -154,10 +154,10 @@ function QuickView({ p, onClose }: { p: Product; onClose: () => void }) {
           </ul>
 
           <div className="mt-auto grid grid-cols-2 gap-2 pt-1">
-            <button type="button" onClick={() => add(true)} className="rounded-md bg-navy py-3 text-[14px] font-semibold text-white transition hover:bg-navy-700">
+            <button type="button" onClick={() => add(true)} className="rounded-md border-[1.5px] border-brand bg-white py-3 text-[14px] font-bold text-navy transition hover:bg-brand-50">
               {t("buyNow")}
             </button>
-            <button type="button" onClick={() => add(false)} className="rounded-md bg-brand py-3 text-[14px] font-semibold text-white transition hover:bg-brand-600">
+            <button type="button" onClick={() => add(false)} className="rounded-md bg-brand py-3 text-[14px] font-bold text-white transition hover:bg-brand-600">
               {t("addToCart")}
             </button>
           </div>

@@ -5,7 +5,7 @@ import { mallImage, mallStores } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { SectionTitle, SmartImage } from "./ui";
 
-const LOGO_TONES = ["bg-amber-600", "bg-emerald-600", "bg-gray-900", "bg-rose-600", "bg-teal-600", "bg-orange-700"];
+const LOGO_TONES = ["bg-saffron-700", "bg-jade-600", "bg-navy", "bg-lotus-700", "bg-brand", "bg-gold-700"];
 
 /** Official brand stores — mirrors Lazada's LazMall strip. */
 export default function MallSection() {

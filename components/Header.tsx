@@ -159,7 +159,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header ref={ref} className="sticky top-0 z-40 bg-white shadow-[0_1px_0_#E5E7EB]">
+    <header ref={ref} className="sticky top-0 z-40 bg-white shadow-[0_1px_0_#ECEAE3]">
       <div className="mx-auto flex max-w-site items-center gap-3 px-3 py-2.5 sm:gap-6 sm:px-4 sm:py-3">
         <Logo compact />
         <CategoriesMenu />

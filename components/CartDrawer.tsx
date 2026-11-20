@@ -81,10 +81,10 @@ export default function CartDrawer() {
         ) : (
           <>
             {toFree > 0 && (
-              <div className="border-b border-line bg-emerald-50/60 px-4 py-2.5">
-                <p className="text-[12px] text-emerald-800">{t("freeDeliveryHint", { amount: price(toFree) })}</p>
-                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-emerald-100">
-                  <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${Math.min(100, (afterDiscount / FREE_DELIVERY_OVER) * 100)}%` }} />
+              <div className="border-b border-line bg-jade-50/60 px-4 py-2.5">
+                <p className="text-[12px] text-jade-800">{t("freeDeliveryHint", { amount: price(toFree) })}</p>
+                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-jade-100">
+                  <div className="h-full rounded-full bg-jade-500 transition-all" style={{ width: `${Math.min(100, (afterDiscount / FREE_DELIVERY_OVER) * 100)}%` }} />
                 </div>
               </div>
             )}
@@ -112,7 +112,7 @@ export default function CartDrawer() {
                             <Plus className="h-3 w-3" aria-hidden />
                           </button>
                         </div>
-                        <button type="button" onClick={() => removeItem(item.key)} aria-label={t("remove")} className="grid h-7 w-7 place-items-center rounded text-gray-400 hover:bg-canvas hover:text-red-600">
+                        <button type="button" onClick={() => removeItem(item.key)} aria-label={t("remove")} className="grid h-7 w-7 place-items-center rounded text-gray-400 hover:bg-canvas hover:text-danger">
                           <Trash2 className="h-4 w-4" aria-hidden />
                         </button>
                       </div>
@@ -140,21 +140,21 @@ export default function CartDrawer() {
                 </button>
               </form>
               {applied && (
-                <p className="flex items-center gap-1.5 text-[12px] text-emerald-700">
+                <p className="flex items-center gap-1.5 text-[12px] text-jade-700">
                   <CircleCheck className="h-4 w-4" aria-hidden /> {t("voucherApplied")}
                 </p>
               )}
-              {invalid && <p className="text-[12px] text-red-600" role="alert">{t("voucherInvalid")}</p>}
+              {invalid && <p className="text-[12px] text-danger" role="alert">{t("voucherInvalid")}</p>}
               {!applied && !invalid && <p className="text-[12px] text-gray-400">{t("voucherHint")}</p>}
 
               <dl className="space-y-1.5 text-[13px]">
                 <div className="flex justify-between text-gray-600"><dt>{t("subtotal")}</dt><dd className="tabular">{price(subtotal)}</dd></div>
                 {discount > 0 && (
-                  <div className="flex justify-between text-emerald-700"><dt>{t("discount")}</dt><dd className="tabular">−{price(discount)}</dd></div>
+                  <div className="flex justify-between text-jade-700"><dt>{t("discount")}</dt><dd className="tabular">−{price(discount)}</dd></div>
                 )}
                 <div className="flex justify-between text-gray-600">
                   <dt>{t("deliveryFee")}</dt>
-                  <dd className="tabular">{delivery === 0 ? <span className="font-medium text-emerald-700">{t("free")}</span> : price(delivery)}</dd>
+                  <dd className="tabular">{delivery === 0 ? <span className="font-medium text-jade-700">{t("free")}</span> : price(delivery)}</dd>
                 </div>
                 <div className="flex items-baseline justify-between border-t border-line pt-2 text-gray-900">
                   <dt className="font-semibold">{t("total")}</dt>

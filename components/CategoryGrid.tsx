@@ -15,7 +15,7 @@ export default function CategoryGrid() {
             <button
               type="button"
               onClick={() => browse({ query: tile.query, category: tile.category })}
-              className="flex h-full w-full flex-col items-center gap-1.5 px-1 py-3 transition hover:shadow-[inset_0_0_0_1px_#F85606]"
+              className="flex h-full w-full flex-col items-center gap-1.5 px-1 py-3 transition hover:shadow-[inset_0_0_0_1px_#0285C9]"
             >
               <span className="h-14 w-14 overflow-hidden rounded-lg bg-canvas sm:h-16 sm:w-16">
                 <SmartImage src={tileImage(tile.img)} alt="" className="h-full w-full object-cover" />

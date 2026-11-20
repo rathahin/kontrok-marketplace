@@ -38,7 +38,7 @@ export default function ProductCard({ p }: { p: Product }) {
         </div>
         <div className="mt-auto flex items-center justify-between gap-1 pt-1 text-[11px] text-gray-500">
           <span className="flex min-w-0 items-center gap-0.5" aria-label={`${p.rating} out of 5, ${p.reviews} reviews`}>
-            <Star className="h-3 w-3 shrink-0 fill-amber-400 text-amber-400" aria-hidden />
+            <Star className="h-3 w-3 shrink-0 fill-gold text-gold" aria-hidden />
             <span className="tabular truncate">({p.rating} • {compact(p.reviews)})</span>
           </span>
           <span className="flex shrink-0 items-center gap-0.5">

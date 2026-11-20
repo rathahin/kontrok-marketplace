@@ -35,17 +35,17 @@ export function CampaignStrip() {
     <button
       type="button"
       onClick={() => browse({})}
-      className="group relative block w-full overflow-hidden bg-gradient-to-r from-navy via-[#3B1E8C] to-[#6D28D9] text-white"
+      className="group relative block w-full overflow-hidden bg-gradient-to-r from-navy-900 via-navy to-brand text-white"
     >
-      <div className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-brand/30 blur-2xl" />
-      <div className="pointer-events-none absolute right-24 -top-6 h-24 w-24 rounded-full bg-fuchsia-400/30 blur-2xl" />
+      {/* Kontrok folk pattern from the app splash */}
+      <div className="pointer-events-none absolute inset-0 bg-[url('/brand/pattern.jpg')] bg-[length:220px] bg-center opacity-20 mix-blend-screen" />
       <div className="relative mx-auto flex h-11 max-w-site items-center justify-center gap-3 px-3 sm:h-14 sm:justify-between sm:px-4">
         <span className="flex items-center gap-2">
-          <span className="rounded bg-brand px-1.5 py-0.5 text-[10px] font-black tracking-wide sm:text-[12px]">{t("camp.tag")}</span>
+          <span className="rounded bg-gold px-1.5 py-0.5 text-[10px] font-black tracking-wide text-gray-900 sm:text-[12px]">{t("camp.tag")}</span>
           <span className="hidden text-[11px] font-semibold text-white/80 sm:inline">{t("camp.dates")}</span>
         </span>
         <span className="text-[15px] font-black tracking-tight sm:text-[26px]">{t("camp.deal")}</span>
-        <span className="hidden items-center gap-1 rounded-sm bg-black px-3 py-1.5 text-[12px] font-bold transition group-hover:bg-brand sm:flex">
+        <span className="hidden items-center gap-1 rounded-full bg-gold px-3.5 py-1.5 text-[12px] font-bold text-gray-900 transition group-hover:bg-white sm:flex">
           {t("camp.cta")} <ChevronRight className="h-3.5 w-3.5" aria-hidden />
         </span>
       </div>
@@ -59,7 +59,7 @@ export default function UtilityBar() {
   return (
     <div className="border-b border-line bg-white text-[11px] text-gray-600">
       <div className="mx-auto flex h-8 max-w-site items-center justify-end gap-4 px-3 sm:px-4">
-        <a href="#footer" className={`${link} font-semibold text-[#E2228B] lg:inline`}>{t("feedback")}</a>
+        <a href="#footer" className={`${link} font-semibold text-lotus-700 lg:inline`}>{t("feedback")}</a>
         <a href="#footer" className={`${link} md:inline`}>{t("saveMoreApp")}</a>
         <a href="#footer" className={`${link} lg:inline`}>{t("sellOn")}</a>
         <a href="#footer" className={`${link} lg:inline`}>{t("customerCare")}</a>
